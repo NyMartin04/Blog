@@ -1,0 +1,31 @@
+.body{
+    font-family: Abril Fatface;
+}
+
+.title{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.nav-item{
+    margin-right: 80px;
+}
+
+#FAQ{
+    margin-right: 0;
+}
+
+.navbar{
+    font-size: large;
+    font-weight: bold;
+}
+
+.text{
+    text-align: center;
+    margin-top: 200px;
+}
+
+.getStartedButton{
+    text-align: center;
+    margin-top: 200px;
+}
