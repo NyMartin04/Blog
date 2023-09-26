@@ -1,0 +1,58 @@
+.body {
+    font-family: Abril Fatface;
+}
+
+.title {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.nav-item {
+    margin-right: 80px;
+}
+
+#FAQ {
+    margin-right: 0;
+}
+
+.navbar {
+    font-size: large;
+    font-weight: bold;
+}
+
+.text {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.getStartedButton {
+    text-align: center;
+    margin-top: 200px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+button.btn{
+    -webkit-box-shadow: 0px 10px 37px 5px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 0px 10px 37px 5px rgba(0, 0, 0, 0.36);
+    box-shadow: 0px 10px 37px 5px rgba(0, 0, 0, 0.36);
+    border-radius: 20px;
+
+}
+
+.row {
+    width: 100%;
+}
+
+footer{
+    padding-bottom: 40px;
+}
+image{
+    width: 30%;
+    padding-left: 3%;
+
+}
+.image img{
+    width: 100%;
+
+}
