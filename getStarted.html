@@ -7,14 +7,12 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./getStarted.css">
+    <link rel="stylesheet" href="getStarted.css">
+    <link rel="stylesheet" href="login.css">
     <title>Get Started</title>
 </head>
 
-<body>
+<body class="body">
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center navbar-fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"></a>
@@ -25,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Posts</a>
@@ -38,64 +36,39 @@
         </div>
     </nav>
 
-    <section class="row">
-        <div class="title col-md-12">
-            <h1 class="text-center">Just Cars Site</h1>
+    <section class="row d-flex justify-content-md-center">
+        <div class="title col-md-12 mt-5 mb-5">
+            <h1 class="text-center title">Just Cars Site</h1>
         </div>
-        <div class="col-12 text-center">
-            <h4>Sign Up</h4>
+        <div class="flip-container col-md-2 me-5">
+            <div class="flipper" id="flipper">
+                <div class="front">
+                    <h1 class="text-center">Login</h1>
+                    <form>
+                        <input type="text" placeholder="Username" />
+                        <input type="password" placeholder="Password" />
+                        <input type="button" value="Login" />
+                    </form>
+                    
+                        <a class="flipbutton" id="loginButton" href="#">Create my account</a>
+                    
+                    
+                </div>
+        
+                <div class="back">
+                    <h1 class="text-center">Register</h1>
+                    <form>
+                        <input type="text" placeholder="Username" />
+                        <input type="password" placeholder="Password" />
+                        <input type="button" value="Sign up" />
+                    </form>
+                    <a class="flipbutton" id="registerButton" href="#">Login to my account</a>
+                </div>
+            </div>
         </div>
-        <div class="col-4"></div>
-        <form class="row col-5">
-            <div class="row col-12 p-2">
-                <div class="col-2"><label for="">UserName</label></div>
-                <div class="col-10"><input type="text"></div>
-            </div>
-            <div class="row col-12 p-2">
-                <div class="col-2"><label for="">Pass</label></div>
-                <div class="col-10"><input type="text"></div>
-            </div>
-            <div class="row col-12 p-2">
-                <div class="col-2"><label for="">RePass</label></div>
-                <div class="col-10"><input type="text"></div>
-            </div>
-            <div class="row col-12 p-2">
-                <div class="col-2"><label for="">Email</label></div>
-                <div class="col-10"><input type="text"></div>
-            </div>
-            <div class="row col-12">
-                <button type="submit" class="btn  button">Submit</button>
-            </div>
-            <br>
-            <hr>
-            <h2 class="  text-center">
-                OR
-            </h2>
-            <hr>
-            <br>
-        </form>
-        <div class="col-12 text-center">
-            <h4>Sign In</h4>
-        </div>
-        <div class="col-4"></div>
-        <form class="row col-5">
-            <div class="row col-12 p-2">
-                <div class="col-2"><label for="">Email</label></div>
-                <div class="col-10"><input type="text"></div>
-            </div>
-            <div class="row col-12 p-2">
-                <div class="col-2"><label for="">Pass</label></div>
-                <div class="col-10"><input type="text"></div>
-            </div>
-            <div class="row col-12">
-                <button type="submit" class="btn  button">Submit</button>
-            </div>
 
-
-
-
-        </form>
     </section>
+
     <footer class="row">
         <div class="col-4 text-center">Copyright</div>
         <div class="col-4 text-center">References</div>
@@ -104,4 +77,8 @@
 
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<script src="login.js"></script>
 </html>

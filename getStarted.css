@@ -1,7 +1,15 @@
-input{
-    width: 100%;
-  
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
+html{
+    overflow-x: hidden;
+}
+
+
+
 button.button{
     width: 25%;
     margin-left: 33%;
@@ -25,3 +33,28 @@ width: 100%;
 footer{
     padding-bottom: 40px;
 }
+
+
+.body {
+    font-family: Abril Fatface;
+}
+
+.nav-item {
+    margin-right: 80px;
+}
+
+#FAQ {
+    margin-right: 0;
+}
+
+.navbar {
+    font-size: large;
+    font-weight: bold;
+}
+
+.text {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
