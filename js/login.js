@@ -8,3 +8,6 @@ loginButton.onclick = function(){
 registerButton.onclick = function(){
 	document.querySelector("#flipper").classList.toggle("flip");
 }
+
+
+

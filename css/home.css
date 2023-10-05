@@ -7,9 +7,6 @@
     margin-right: 80px;
 }
 
-#FAQ {
-    margin-right: 0;
-}
 
 .navbar {
     font-size: large;
@@ -40,9 +37,7 @@ button.btn{
     width: 100%;
 }
 
-footer{
-    padding-bottom: 40px;
-}
+
 image{
     width: 30%;
     padding-left: 3%;
