@@ -1,0 +1,36 @@
+.fixed_bottom {
+    padding-top: 100px;
+    height: auto !important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Vagy adj meg egy fix szélességet vagy egyéb stílusokat */
+    background-color: #f1f1f1;
+    /* Háttérszín (opcionális) */
+    padding: 20px;
+    /* Belső tér (opcionális) */
+    text-align: center;
+    /* Szöveg igazítás középre (opcionális) */
+}
+.listItem{
+    /*height: 60px !important;*/
+    font-size: 8px !important;
+    padding: 4px !important;
+    border: #919191 !important  ;
+    background-color: #f00 !important;
+    color: #000000 !important;
+}
+
+
+
+.noFix {
+    padding-top: 100px;
+    width: 100%;
+    /* Vagy adj meg egy fix szélességet vagy egyéb stílusokat */
+    background-color: #f1f1f1;
+    /* Háttérszín (opcionális) */
+    padding: 20px;
+    /* Belső tér (opcionális) */
+    text-align: center;
+    height: auto !important;
+}
