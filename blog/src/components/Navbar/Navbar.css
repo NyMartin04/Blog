@@ -28,11 +28,12 @@ box-shadow: 1px 9px 20px 5px rgba(0,0,0,0.75);
 }
 .linkNav{
     background-color: #FF0000 !important;
-    border-radius: 10px;
-    width: 100px;
-    max-height: 20px !important;
+    border-radius: 10px !important;
+    min-width: 100px !important;
+    padding: 5px !important;
+    min-height: 20px !important;
 font-size: small !important;
-    text-align:  center;
+    text-align:  center !important;
     margin: 10px !important;
     color: #fff !important;
     

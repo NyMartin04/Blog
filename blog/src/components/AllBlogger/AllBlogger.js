@@ -7,7 +7,7 @@ function Blogs(params) {
    const content = params.content;
   
    return(
-      <div style={{backgroundColor:"white",display: 'flex', justifyContent: 'center', alignItems: 'center',height:"100%"}} >
+      <div  style={{backgroundColor:"white",display: 'flex', justifyContent: 'center', alignItems: 'center',height:"100%"}} >
          <Row className='overFlowRow' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',width:"100%",height:"100%" }}>
             {content.map((item,index)=>{
             console.log(item);

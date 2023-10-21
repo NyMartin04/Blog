@@ -7,7 +7,7 @@ function NoPage () {
 <div>
    <Navbar></Navbar>
    nincs ilyen Side
-   <Footer window={window} />
+   <Footer window={window} fixed={"fixed"} />
 </div>)
 };
 
