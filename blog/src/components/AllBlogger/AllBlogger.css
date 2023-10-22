@@ -1,5 +1,29 @@
-/* styles.css */
-
+@media (max-width: 576px) {
+    .overFlow {
+        overflow: auto !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      max-height: 50vh;
+    }
+    .overFlowRow {
+        overflow: auto !important;
+        max-height: 50vh !important;
+    }
+  }
+  
+  @media (min-width: 577px) and (max-width: 1920px) {
+    .overFlow {
+      overflow: auto !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      max-height: 100vh;
+    }
+    .overFlowRow {
+        overflow: auto !important;
+        max-height: 100vh !important;
+    }
+  }
+  
 .AllBlogger {
     -webkit-box-shadow: 0px -24px 10px 10px rgba(0,0.4,0.5,0.5);
 -moz-box-shadow: 0px -24px 10px 10px rgba(0,0.4,0.5,0.5);
@@ -10,12 +34,7 @@ box-shadow: 0px -24px 10px 10px rgba(0,0.4,0.5,0.5);
 }
 
 
-.overFlow {
-    overflow: auto !important;
-    width: 100% !important;
-    min-height: 80vh !important;
-    max-height: 100vh !important;
-}
+
 
 .overFlow::-webkit-scrollbar {
     width: 5px;

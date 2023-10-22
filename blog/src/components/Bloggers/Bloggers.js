@@ -13,7 +13,7 @@ function CardBlock(proms){
          return(<Col md="4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     
          <Card className='card-side'>
- <Card.Header className='card-header' >{item.name}</Card.Header>
+ <Card.Header className='card-Header' >{item.name}</Card.Header>
  <Card.Body style={{height:"auto"}}>
     <Col className='blogger-Script' md="12">
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley

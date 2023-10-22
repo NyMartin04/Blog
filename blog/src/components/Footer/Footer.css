@@ -24,6 +24,7 @@
 
 
 .noFix {
+    margin-top:100px !important ;
     padding-top: 100px;
     width: 100%;
     /* Vagy adj meg egy fix szélességet vagy egyéb stílusokat */
