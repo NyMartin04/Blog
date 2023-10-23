@@ -28,7 +28,7 @@ function Faq(params) {
    const [question, setQuestion] = useState([]);
 
    useEffect(() => {
-      setQuestion([{ question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }])
+      setQuestion([{ question: "Ez egy kérdés",id:0 }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }, { question: "What Do I Do If..." }])
    }, [])
    return (<div className='Faq'>
       <img className='FAQIMG' src={car3} />
