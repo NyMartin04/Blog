@@ -1,0 +1,67 @@
+.main-box{
+    min-height: 50vh;
+    width: 100%;
+}
+.login{
+    background-color: #252525;
+    aspect-ratio: 1 / 1;
+    max-height: 50vh;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+.signup{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #f00;
+    aspect-ratio: 1 / 1;
+    max-height: 50vh;
+    color: #fff;
+    border-radius: 10px;
+}
+.login.col-2 {
+    background-image: url('../../images/login.png'); /* Adj meg itt egy tényleges elérési utat a képhez */
+    background-repeat: no-repeat; /* Kikapcsoljuk az étlődést */
+    background-size: auto;
+    background-position: center;    
+    height: auto;
+    padding-top:150px ;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .signup.col-2 {
+    background-image: url('../../images/signup.png'); /* Adj meg itt egy tényleges elérési utat a képhez */
+    background-repeat: no-repeat; /* Kikapcsoljuk az ismétlődést */
+    background-size: auto;
+    background-position: center;    
+    height: auto;
+    padding-top:150px ;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .login.col-2 div{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f00;
+  }
+  .signup.col-2 div{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #252525;
+  }
+  .display-auto-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .display-auto-center > *{
+    padding-top: 5px;
+  }

@@ -1,0 +1,100 @@
+@media (max-width: 576px) {
+    .overFlow {
+        overflow: auto !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      max-height: 50vh;
+    }
+    .overFlowRow {
+        overflow: auto !important;
+        max-height: 50vh !important;
+    }
+  }
+  
+  @media (min-width: 577px) and (max-width: 1920px) {
+    .overFlow {
+      overflow: auto !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      max-height: 100vh;
+    }
+    .overFlowRow {
+        overflow: auto !important;
+        max-height: 100vh !important;
+    }
+  }
+  
+.AllBlogger {
+    -webkit-box-shadow: 0px -24px 10px 10px rgba(0,0.4,0.5,0.5);
+-moz-box-shadow: 0px -24px 10px 10px rgba(0,0.4,0.5,0.5);
+box-shadow: 0px -24px 10px 10px rgba(0,0.4,0.5,0.5);
+    min-height: 80vh !important;
+    background-color: #f00 !important;
+
+}
+
+
+
+
+.overFlow::-webkit-scrollbar {
+    width: 5px;
+}
+
+.overFlow::-webkit-scrollbar-thumb {
+    background-color: none;
+    border-radius: 2px;
+    border: #fff 1px solid;
+}
+
+.overFlow::-webkit-scrollbar-track {
+    background-color: none;
+}
+
+.overFlowRow {
+    overflow: auto !important;
+    max-height: 100vh !important;
+}
+
+.overFlowRow::-webkit-scrollbar {
+    width: 5px;
+}
+
+.overFlowRow::-webkit-scrollbar-thumb {
+    background-color: none;
+    border-radius: 2px;
+    border: #000000 1px solid;
+}
+
+.overFlowRow::-webkit-scrollbar-track {
+    background-color: none;
+}
+
+.itemAllBlogger {
+    width: 100% !important;
+    min-height: 5vh !important;
+    max-height: 20vh !important;
+    background-color: none !important;
+}
+
+.imgBlogger {
+    height: 100px;
+}
+
+.leftSide {
+    -webkit-box-shadow: inset -20px 0px 10px 0px rgba(0,0,0,0.7);
+    -moz-box-shadow: inset -20px 0px 10px 0px rgba(0,0,0,0.7);
+    box-shadow: inset -20px 0px 10px 0px rgba(0,0,0,0.7);
+}
+
+.rightSide {
+    background-color: #252525;
+}
+
+.rightSideDiv {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 80% !important;
+    height: 100% !important;
+    background-color: #F1EFEF !important;
+}
