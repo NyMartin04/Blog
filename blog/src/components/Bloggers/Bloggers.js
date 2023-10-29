@@ -45,7 +45,7 @@ function Bloggers() {
     <Col style={{ maxHeight: "20vh" }} className='text-white' sm="12"><h1>Bloggers</h1></Col>
     <Col sm="12" className='main-card-Blogger'>
         
-    <CardBlock blogger={[{name:"Martin"},{name:"Szabina"},{name:"Elemér"}]} exit={handlerDisplay} />
+    <CardBlock blogger={[{name:"Lajos"},{name:"Szabina"},{name:"Elemér"}]} exit={handlerDisplay} />
     </Col>
 </Row>
 
