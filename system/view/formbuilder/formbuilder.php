@@ -1,6 +1,6 @@
 <?php
 
-namespace View\InputForm;
+namespace View\FormBuilder;
 
 require_once 'inputfield.php';
 require_once 'checkfield.php';
@@ -14,14 +14,13 @@ class FormBuilder
 	private $btnName;
 	private $fields;
 	private $values;
-	private $captchaKey;
 	
 	public function __construct($action = '', $method = 'post') 
 	{
 		$this->action = $action;
 		$this->method = $method;
 		
-		$this->button = 'Elküld';
+		$this->button = 'Submit';
 		$this->fields = [];
 		$this->values = null;
 		$this->captchaKey = false;
@@ -44,11 +43,6 @@ class FormBuilder
 		$this->btnName = $name;
 		return $this;
 	}
-	public function setCaptchaKey($captchaKey) 
-	{
-		$this->captchaKey = $captchaKey;
-		return $this;
-	}
 		
 	public function asHTML()
 	{
@@ -67,10 +61,6 @@ class FormBuilder
 				}
 			}
 			$html = $html . $field->asHTML();
-		}
-		if($this->captchaKey)
-		{
-			$html = $html .'<div class="g-recaptcha" data-sitekey="'. $this->captchaKey .'"></div>';
 		}
 		$html = $html .'<button name="'. $this->btnName .'" value="1">'. $this->button .'</button>';
 		$html = $html .'</form>'; 
