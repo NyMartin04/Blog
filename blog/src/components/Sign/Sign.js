@@ -3,37 +3,60 @@ import NavBar from '../Navbar/Navbar';
 import "./Sign.css"
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Footer from '../Footer/Footer';
-
+import axios from "axios";
 function Signup(params) {
+
+
+  const handlerSubmit = (e)=>{
+   e.preventDefault();
+if (e.target.pass.value === e.target.repass.value) {
+   const data = {
+      email: e.target.email.value,
+      username:e.target.username.value,
+      pass: e.target.pass.value 
+   }
+
+   console.log(data);
+   // axios.post("",{}).then(res=>{
+
+   // }).catch(err=>{
+
+   // })
+}
+else{
+   alert("Nem jo nem egyeznek az adatok a Jelszonál")
+}
+  }
+
    return (
       <Container>
          <h1>Signup</h1>
          <hr/>
          
-            <Form>
+            <Form onSubmit={handlerSubmit}>
                <Row className='display-auto-center'>
                <Col className='col-12'>
                   <Form.Group>
                      <Form.Label>Enter your Email address</Form.Label>
-                     <Form.Control type='text' placeholder='Email' />
+                     <Form.Control type='text' placeholder='Email' id="email" name="email" />
                   </Form.Group>
                </Col>
                <Col className='col-12'>
                   <Form.Group>
                      <Form.Label>Enter your Username </Form.Label>
-                     <Form.Control type='text' placeholder='Username' />
+                     <Form.Control type='text' placeholder='Username' id="username" name="username" />
                   </Form.Group>
                </Col>
                <Col className='col-6'>
                   <Form.Group>
                      <Form.Label>Enter your password</Form.Label>
-                     <Form.Control type='password' placeholder='Password' />
+                     <Form.Control type='password' placeholder='Password' id="pass" name="pass" />
                   </Form.Group>
                </Col>
                <Col className='col-6'>
                   <Form.Group>
                      <Form.Label>Enter your Re Password</Form.Label>
-                     <Form.Control type='password' placeholder='RePassword' />
+                     <Form.Control type='password' placeholder='RePassword' id="repass" name="repass" />
                   </Form.Group>
                </Col>
                <Col className='col-2'>
