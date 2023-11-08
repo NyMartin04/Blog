@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller;
+namespace controller;
 
 class HomeController{
     public static function Main(){
