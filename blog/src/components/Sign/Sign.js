@@ -13,15 +13,17 @@ if (e.target.pass.value === e.target.repass.value) {
    const data = {
       email: e.target.email.value,
       username:e.target.username.value,
-      pass: e.target.pass.value 
+      password: e.target.pass.value 
    }
 
    console.log(data);
-   // axios.post("",{}).then(res=>{
+   axios.post("http://localhost/BlogBE/Controller/UserController.php/signup",data).then(res=>{
+   console.log(res);
+   !res.data.err?alert("success"):alert(res.data.data)
 
-   // }).catch(err=>{
-
-   // })
+   }).catch(err=>{
+      alert(err)
+   })
 }
 else{
    alert("Nem jo nem egyeznek az adatok a Jelszonál")
