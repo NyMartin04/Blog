@@ -1,5 +1,5 @@
 .main{
-    background-color: #f00;
+    background-color: #860000;
 }
 .conteiner-main{
     background-color: white;
@@ -21,7 +21,7 @@
     
 }
 .bg-red{
-    background-color: #f00 !important;
+    background-color: #860000 !important;
     color: white !important;
 }
 .write-control{

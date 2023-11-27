@@ -16,7 +16,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    background-color: #f00;
+    background-color: #860000;
     aspect-ratio: 1 / 1;
     max-height: 50vh;
     color: #fff;
@@ -49,7 +49,7 @@
   .login.col-2 div{
     border-radius: 10px;
     padding: 10px;
-    background-color: #f00;
+    background-color: #860000;
   }
   .signup.col-2 div{
     border-radius: 10px;
