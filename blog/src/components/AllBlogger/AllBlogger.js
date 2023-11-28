@@ -7,11 +7,11 @@ function Blogs(params) {
    const content = params.content;
   
    return(
-      <div  style={{backgroundColor:"white",display: 'flex', justifyContent: 'center', alignItems: 'center',height:"100%"}} >
+      <div className='AllBlogDivMain' >
          <Row className='overFlowRow' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',width:"100%",height:"100%" }}>
             {content.map((item,index)=>{
             console.log(item);
-          return ( <Col sm="8" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',width:"70%",height:"auto",minHeight:"20vh",backgroundColor:"red",marginTop:"20px",borderRadius:"20px" }} >
+          return ( <Col sm="8" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',width:"70%",height:"auto",minHeight:"20vh",backgroundColor:"#860000",marginTop:"20px",borderRadius:"20px" }} >
                <Row>
                   <Col sm="12">
                      <Row  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
