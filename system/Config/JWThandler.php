@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace config;
 
 // Autoload.php fájl importálása a külső függőségek betöltéséhez
 require_once(__DIR__.'\..\..\vendor\autoload.php');
