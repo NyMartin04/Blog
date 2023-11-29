@@ -1,6 +1,9 @@
 <?php
+
 namespace controller;
+
 require_once __DIR__. '\..\..\Autoloader.php';
+
 header("Content-Type: application/json");
 
 header("Access-Control-Allow-Origin: *");

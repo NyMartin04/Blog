@@ -1,8 +1,10 @@
 <?php
 
 namespace config;
+
 require_once __DIR__.'/Res.php';
 require_once __DIR__.'/HttpStatus.php';
+
 use config\Res;
 use config\HttpStatus;
 
@@ -14,4 +16,3 @@ class Exception{
         $res->send();
     }
 } 
-

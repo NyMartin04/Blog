@@ -14,10 +14,12 @@ require_once __DIR__. '\..\..\Autoloader.php';
          $JWTData = UserModel::CallProcedure($data,"login");   
          return array("err" => $JWTData["err"], "JWT" => JWThandler::generateJWT($JWTData),"data"=>$JWTData["data"]);
      }
+     
      public static function sign($data) {
         $data["password"] = hash("sha256", $data["password"]);
         return UserModel::CallProcedure($data,"signup");
     }
+
     public static function JWTValidate($JWT){
         $verifyJWT = JWThandler::verifyJWT($JWT);
         if ($verifyJWT) {
@@ -26,7 +28,6 @@ require_once __DIR__. '\..\..\Autoloader.php';
             return $arr;
         } else{
             Exception::msg(array("err" => true,"data"=> "Unexpected error."));
-        }
-        
+        }  
     }
  }

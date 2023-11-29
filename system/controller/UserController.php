@@ -1,6 +1,9 @@
 <?php
+
 namespace controller;
+
 require_once __DIR__. '\..\..\Autoloader.php';
+
 header("Content-Type: application/json");
 
 header("Access-Control-Allow-Origin: *");
@@ -13,7 +16,7 @@ use config\HttpStatus;
 use service\UserService;
 use config\Exception;
 
-/*Login, Reg, JWTValidate, Follow, Profile update, Messages, Post Notifications, Likes*/
+/*Login #DONE, Reg #DONE, JWTValidate #DONE, Follow #TODO, Profile update #TODO, Messages #TODO, Post Notifications #TODO, Likes #TODO*/
 
 $req = new Req();
 $res = new Res();
