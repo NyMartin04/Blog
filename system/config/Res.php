@@ -2,7 +2,6 @@
 
 namespace config;
 require_once __DIR__.'\HttpStatus.php';
-use config\HttpStatus;
 
 class Res
 {
@@ -18,7 +17,7 @@ class Res
         foreach ($this->getCookies() as $key => $value) {
             setcookie($key, $value);
         }
-        http_response_code($this->getHeaders());
+        http_response_code($this->getStatus_code());
 
         echo json_encode($this->getBody());
     }
@@ -73,29 +72,20 @@ class Res
      * @param mixed $cookies 
      * @return self
      */
-    public function addCookie($key, $value): self
+    public function addCookie($key, $value)
     {
         $this->cookies[$key] = $value;
         return $this;
     }
 
-
-    /**
-     * @return HttpStatus
-     */
     public function getStatus_code()
     {
         return $this->status_code;
     }
 
-    /**
-     * @param HttpStatus $status_code 
-     * @return self
-     */
-    public function setStatus_cod($status_code): self
+    public function setStatus_code($status_code)
     {
         $this->status_code = $status_code;
-        return $this;
     }
 }
 

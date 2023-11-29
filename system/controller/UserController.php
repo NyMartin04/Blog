@@ -20,22 +20,25 @@ $res = new Res();
 function login(Req $req, Res $res){
     $serviceData = UserService::login($req->getBody());
     $res->setBody($serviceData);
-    $serviceData["err"] ? $res->setStatus_cod(HttpStatus::OK) : $res->setStatus_cod(HttpStatus::INTERNAL_SERVER_ERROR);
+    $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
 function sign($req,$res){
-    
+    $serviceData = UserService::sign($req->getBody());
+    $res->setBody($serviceData);
+    $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
+    $res->send();
 }
 function test($req,$res){
     
 }
 
 if ($req->getMethod() === "POST") {
-    echo $req->getFun();
     switch ($req->getFun()) {
         case "login": login($req, $res);
             break;
         case "sign":
+            sign($req, $res);
         default:
             break;
     }

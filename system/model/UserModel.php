@@ -5,8 +5,14 @@ namespace model;
 use model\Db;
 
 class UserModel{
-        public static function login($array){
-        $db = Db::connectToDatabase('b__j_c_sblog', 'root', '');
-        return Db::Call("login", $array, $db);
+        public static function CallProcedure($array,$storeProcedure){
+            $db = null;
+            try {
+                $db = Db::connectToDatabase('b__j_c_sblog', 'root', '');
+            } catch (\PDOException $th) {
+                $db = Db::connectToDatabase('blogdb', 'root', '');
+            }
+        
+        return Db::Call($storeProcedure, $array, $db);
     }
 }

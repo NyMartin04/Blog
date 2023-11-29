@@ -10,8 +10,12 @@
  class UserService{
      public static function login($data) {
          $data["password"] = hash("sha256", $data["password"]);
-         $JWTData = UserModel::login($data);   
-         $HANDLER = JWThandler::getInc();
-         return array("err" => $JWTData["err"], "JWT" => $HANDLER->generateJWT($JWTData));
+         $JWTData = UserModel::CallProcedure($data,"login");   
+         return array("err" => $JWTData["err"], "JWT" => JWThandler::generateJWT($JWTData),"data"=>$JWTData["data"]);
      }
+     public static function sign($data) {
+        $data["password"] = hash("sha256", $data["password"]);
+        return UserModel::CallProcedure($data,"signup");   
+
+    }
  }

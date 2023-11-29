@@ -12,32 +12,23 @@ use Firebase\JWT\Key;
 // JWTHandler osztály definiálása
 class JWThandler{
 
-    // Singleton példány változó inicializálása
-    public static $inc = null;
-
     // Titkos kulcs az aláíráshoz
-    public  $secret = "userJWT";
+    private static  $secret = "userJWT";
 
-    // Singleton példány létrehozása
-    public static function getInc(){
-        if (JWTHandler::$inc == null) {
-            JWTHandler::$inc = new JWTHandler();
-        }
-        return JWTHandler::$inc;
-    }
+
     
     // JWT generálása a kapott felhasználói adatok alapján
-    public function generateJWT($userData) {
+    public static function generateJWT($userData) {
         // JWT kódolás: felhasználói adatok, titkos kulcs, algoritmus
-        $token = JWT::encode($userData, $this->secret, 'HS256');
+        $token = JWT::encode($userData, self::$secret, 'HS256');
         return $token;
     }
 
     // JWT ellenőrzése és dekódolása
-    public function verifyJWT($token) {
+    public static function verifyJWT($token) {
         try {
             // JWT dekódolás: token, kulcs, algoritmus
-            $decoded = JWT::decode($token, new Key($this->secret, 'HS256'));
+            $decoded = JWT::decode($token, new Key(self::$secret, 'HS256'));
             return $decoded;
         } catch (Exception $e) {
             // Hiba esetén false visszaadása
