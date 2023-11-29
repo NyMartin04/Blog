@@ -1,8 +1,17 @@
 import React from 'react'
-
+import Navbar from "../Navbar/Navbar"
+import TopBlogger from "../TopBlogger/TopBlogger";
+import AllBlogger from "../AllBlogger/allBlogger";
+import Kep from "../../assets/porsche.jpg"
 const Home = () => {
   return (
-    <div className='bg-red-600'>Home</div>
+    <>
+    <Navbar/>
+    <TopBlogger/>
+    <img src={Kep} className=' object-cover h-[100vh] md:object-fill md:w-screen md:h-auto opacity-80' alt="" />
+    <AllBlogger />
+    </>
+    
   )
 }
 
