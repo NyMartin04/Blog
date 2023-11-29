@@ -1,5 +1,4 @@
 <?php
-
 namespace config;
 
 class HttpStatus {
@@ -14,3 +13,6 @@ class HttpStatus {
     const INTERNAL_SERVER_ERROR = 500;
     const SERVICE_UNAVAILABLE = 503;
 }
+
+// Használat példája:
+$responseCode = HttpStatus::EXPECTATION_FAILED;

@@ -4,30 +4,26 @@ namespace config;
 
 
 class Req{
+
     private $device;
     private $body;
     private $fun;
     private $method;
     private $funNum = 5;
-    private $token;
-    
 public function __construct(){
     $this->setBody(json_decode(file_get_contents('php://input'), true));
     $this->setDevice($_SERVER['REMOTE_ADDR']);
-    $fun = isset(explode("/", $_SERVER['REQUEST_URI'])[$this->funNum])? explode("/", $_SERVER['REQUEST_URI'])[$this->funNum]: "";
+    $fun = isset(explode("/", $_SERVER['REQUEST_URI'])[$this->funNum])?explode("/", $_SERVER['REQUEST_URI'])[$this->funNum]:"";
     $this->setFun($fun);
     $this->setMethod($_SERVER['REQUEST_METHOD']);
-    $this->token = getallheaders()["token"];
+
 }
 
 
-public function getToken() {
-    return $this->token;
-}
 
 	/**
 	 * @return mixed
-	*/
+	 */
 	public function getDevice() {
 		return $this->device;
 	}
@@ -35,14 +31,14 @@ public function getToken() {
 	/**
 	 * @param mixed $device 
 	 * @return self
-	*/
+	 */
 	private function setDevice($device): self {
 		$this->device = $device;
 		return $this;
 	}
 	/**
 	 * @return mixed
-	*/
+	 */
 	public function getBody() {
 		return $this->body;
 	}
@@ -50,7 +46,7 @@ public function getToken() {
 	/**
 	 * @param mixed $body 
 	 * @return self
-	*/
+	 */
 	private function setBody($body): self {
 		$this->body = $body;
 		return $this;
@@ -58,7 +54,7 @@ public function getToken() {
 
 	/**
 	 * @return mixed
-	*/
+	 */
 	public function getFun() {
 		return $this->fun;
 	}
@@ -66,7 +62,7 @@ public function getToken() {
 	/**
 	 * @param mixed $fun 
 	 * @return self
-	*/
+	 */
 	private function setFun($fun): self {
 		$this->fun = $fun;
 		return $this;
@@ -74,7 +70,7 @@ public function getToken() {
 
 	/**
 	 * @return mixed
-	*/
+	 */
 	public function getMethod() {
 		return $this->method;
 	}
@@ -82,11 +78,13 @@ public function getToken() {
 	/**
 	 * @param mixed $method 
 	 * @return self
-	*/
+	 */
 	private function setMethod($method): self {
 		$this->method = $method;
 		return $this;
 	}
+
+
 }
 /*Ebben a példában a Req osztályt használjuk egy HTTP kérés adatainak megjelenítésére és feldolgozására. 
 Az osztály getDevice(), getBody(), getFun(), és getMethod() metódusai segítségével hozzáférhetünk a kérés

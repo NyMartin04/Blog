@@ -1,9 +1,6 @@
 <?php
-
 namespace controller;
-
-require_once __DIR__. '\..\..\Autoloader.php';
-
+ require_once __DIR__. '\..\..\Autoloader.php';
 header("Content-Type: application/json");
 
 header("Access-Control-Allow-Origin: *");
@@ -16,7 +13,6 @@ use config\HttpStatus;
 use service\UserService;
 use config\Exception;
 
-/*Login #DONE, Reg #DONE, JWTValidate #DONE, Follow #TODO, Profile update #TODO, Messages #TODO, Post Notifications #TODO, Likes #TODO*/
 
 $req = new Req();
 $res = new Res();
@@ -27,34 +23,26 @@ function login(Req $req, Res $res){
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
-
-function sign(Req $req, Res $res){
+function sign($req,$res){
     $serviceData = UserService::sign($req->getBody());
     $res->setBody($serviceData);
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
-
-function JWTValidate(Req $req, Res $res){
-    $serviceData = UserService::JWTValidate($req->getToken());
-    $res->setBody($serviceData);
-    $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
-    $res->send();
-}
-
 function test($req,$res){
     
 }
 
-if ($req->getMethod() === "POST") {
+if ($req->getMethod() === "OPTIONS") {
+    header("HTTP/1.1 200 OK");
+    exit();
+} elseif ($req->getMethod() === "POST") {
     switch ($req->getFun()) {
-        case "login": login($req, $res);
+        case "login":
+            login($req, $res);
             break;
         case "sign":
             sign($req, $res);
-            break;
-        case "verify":
-            JWTValidate($req, $res);
             break;
         default:
             break;
