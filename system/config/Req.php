@@ -10,16 +10,21 @@ class Req{
     private $fun;
     private $method;
     private $funNum = 5;
+    private $token;
+    
 public function __construct(){
     $this->setBody(json_decode(file_get_contents('php://input'), true));
     $this->setDevice($_SERVER['REMOTE_ADDR']);
-    $fun = isset(explode("/", $_SERVER['REQUEST_URI'])[$this->funNum])?explode("/", $_SERVER['REQUEST_URI'])[$this->funNum]:"";
+    $fun = isset(explode("/", $_SERVER['REQUEST_URI'])[$this->funNum])? explode("/", $_SERVER['REQUEST_URI'])[$this->funNum]: "";
     $this->setFun($fun);
     $this->setMethod($_SERVER['REQUEST_METHOD']);
-
+    $this->token = getallheaders()["token"];
 }
 
 
+public function getToken() {
+    return $this->token;
+}
 
 	/**
 	 * @return mixed

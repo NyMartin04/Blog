@@ -19,10 +19,18 @@ class JWThandler{
     
     // JWT generálása a kapott felhasználói adatok alapján
     public static function generateJWT($userData) {
-        // JWT kódolás: felhasználói adatok, titkos kulcs, algoritmus
-        $token = JWT::encode($userData, self::$secret, 'HS256');
+        $currentTime = time();
+        $expirationTime = $currentTime + 3600;
+
+        $payload = array(
+            "data" => $userData,
+            "exp" => $expirationTime
+        );
+
+        $token = JWT::encode($payload, self::$secret, 'HS256');
         return $token;
     }
+
 
     // JWT ellenőrzése és dekódolása
     public static function verifyJWT($token) {

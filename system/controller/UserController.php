@@ -1,6 +1,6 @@
 <?php
 namespace controller;
- require_once __DIR__. '\..\..\Autoloader.php';
+require_once __DIR__. '\..\..\Autoloader.php';
 header("Content-Type: application/json");
 
 header("Access-Control-Allow-Origin: *");
@@ -13,6 +13,7 @@ use config\HttpStatus;
 use service\UserService;
 use config\Exception;
 
+/*Login, Reg, JWTValidate, Follow, Profile update, Messages, Post Notifications, Likes*/
 
 $req = new Req();
 $res = new Res();
@@ -23,12 +24,21 @@ function login(Req $req, Res $res){
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
-function sign($req,$res){
+
+function sign(Req $req, Res $res){
     $serviceData = UserService::sign($req->getBody());
     $res->setBody($serviceData);
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
+
+function JWTValidate(Req $req, Res $res){
+    $serviceData = UserService::JWTValidate($req->getToken());
+    $res->setBody($serviceData);
+    $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
+    $res->send();
+}
+
 function test($req,$res){
     
 }
@@ -39,9 +49,13 @@ if ($req->getMethod() === "POST") {
             break;
         case "sign":
             sign($req, $res);
+            break;
+        case "verify":
+            JWTValidate($req, $res);
+            break;
         default:
             break;
     }
 } else {
-    Exception::msg(array("err" => true, "data" => $req->getMethod()."not found."));
+    Exception::msg(array("err" => true, "data" => $req->getMethod()." not found."));
 }
