@@ -1,9 +1,7 @@
 <?php
 
 namespace model;
-
-use config\Exception;
-
+        
     class Db{
         public static function connectToDatabase($dbName, $dbUser, $dbPass, $dbHost = '127.0.0.1'){
             $dsn = "mysql:host=".$dbHost.";dbname=".$dbName.";charset=utf8mb4";
@@ -29,10 +27,11 @@ use config\Exception;
             return array("err" => false, "data" => $resultSet);
 
             } catch (\Throwable $th) {
-                return Exception::msg(array("err"=>true,"data"=>$th->getMessage()));
+                return array("err" => true, "data" => $th->getMessage());
             }
         }
 
 
         private static $db;
+
     }

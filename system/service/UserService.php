@@ -19,6 +19,9 @@ require_once __DIR__. '\..\..\Autoloader.php';
         $data["password"] = hash("sha256", $data["password"]);
         return UserModel::CallProcedure($data,"signup");
     }
+     public static function getUserById($data) {
+        return UserModel::CallProcedure($data,"	getUserByID");
+    }
 
     public static function JWTValidate($JWT){
         $verifyJWT = JWThandler::verifyJWT($JWT);

@@ -34,6 +34,13 @@ function sign(Req $req, Res $res){
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
+function getUserByID(Req $req, Res $res){
+    $serviceData = UserService::getUserById($req->getBody());
+    //print_r($serviceData);
+    // $res->setBody($serviceData);
+    // $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
+    // $res->send();
+}
 
 function JWTValidate(Req $req, Res $res){
     $serviceData = UserService::JWTValidate($req->getToken());
@@ -55,6 +62,9 @@ if ($req->getMethod() === "POST") {
             break;
         case "verify":
             JWTValidate($req, $res);
+            break;
+        case "getUserByID":
+            getUserByID($req, $res);
             break;
         default: $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR);
             break;

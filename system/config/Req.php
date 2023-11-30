@@ -17,7 +17,12 @@ public function __construct(){
     $fun = isset(explode("/", $_SERVER['REQUEST_URI'])[$this->funNum])? explode("/", $_SERVER['REQUEST_URI'])[$this->funNum]: "";
     $this->setFun($fun);
     $this->setMethod($_SERVER['REQUEST_METHOD']);
-    $this->token = getallheaders()["token"];
+	if(isset(getallheaders()["token"])) {
+		$this->token = getallheaders()["token"];
+	} else {
+		$this->token = null;
+	}
+    
 }
 
 
