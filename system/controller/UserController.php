@@ -56,7 +56,7 @@ if ($req->getMethod() === "POST") {
         case "verify":
             JWTValidate($req, $res);
             break;
-        default:
+        default: $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR);
             break;
     }
 } else {
