@@ -22,6 +22,12 @@ require_once __DIR__. '\..\..\Autoloader.php';
      public static function getUserById($data) {
         return UserModel::CallProcedure($data,"	getUserByID");
     }
+     public static function getUserByUsername($data) {
+        return UserModel::CallProcedure($data,"	getUserByUsername");
+    }
+     public static function userUpdate($data) {
+        return UserModel::CallProcedure($data,"	userUpdate");
+    }
 
     public static function JWTValidate($JWT){
         $verifyJWT = JWThandler::verifyJWT($JWT);
