@@ -26,6 +26,29 @@ require_once __DIR__. '\..\..\Autoloader.php';
         return UserModel::CallProcedure($data,"	getUserByUsername");
     }
      public static function userUpdate($data) {
+        if(!isset($data["id"])){
+            return array("err"=>true,"data"=>"Miss User Id");
+        }
+        if(!isset($data["username"])){
+            $data["username"] = null;
+        }
+        if(!isset($data["password"])){
+            $data["password"] = null;
+        }else{
+            $data["password"] = hash("sha256", $data["password"]);
+        }
+        if(!isset($data["bio"])){
+            $data["bio"] = null;
+        }
+        if(!isset($data["level"])){
+            $data["level"] = null;
+        }
+        if(!isset($data["email"])){
+            $data["email"] = null;
+        }
+        if(!isset($data["profilePicture"])){
+            $data["profilePicture"] = null;
+        }
         return UserModel::CallProcedure($data,"	userUpdate");
     }
 
