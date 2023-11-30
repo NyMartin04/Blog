@@ -1,29 +1,32 @@
 <?php
 
 namespace config;
-
 require_once __DIR__.'\HttpStatus.php';
 
 class Res
 {
+
     private $body;
     private $headers;
     private $cookies = [];
     private $status_code;
+
 
     public function send()
     {
         foreach ($this->getCookies() as $key => $value) {
             setcookie($key, $value);
         }
-
         http_response_code($this->getStatus_code());
+
         echo json_encode($this->getBody());
     }
 
+
+
     /**
      * @return mixed
-    */
+     */
     public function getBody()
     {
         return $this->body;
@@ -32,7 +35,7 @@ class Res
     /**
      * @param mixed $body 
      * @return self
-    */
+     */
     public function setBody($body): self
     {
         $this->body = $body;
@@ -41,7 +44,7 @@ class Res
 
     /**
      * @return mixed
-    */
+     */
     public function getHeaders()
     {
         return $this->headers;
@@ -50,7 +53,7 @@ class Res
     /**
      * @param mixed $headers 
      * @return self
-    */
+     */
     public function setHeaders($headers): self
     {
         $this->headers = $headers;
@@ -59,7 +62,7 @@ class Res
 
     /**
      * @return mixed
-    */
+     */
     public function getCookies()
     {
         return $this->cookies;
@@ -68,7 +71,7 @@ class Res
     /**
      * @param mixed $cookies 
      * @return self
-    */
+     */
     public function addCookie($key, $value)
     {
         $this->cookies[$key] = $value;

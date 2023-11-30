@@ -26,10 +26,10 @@ namespace model;
             $resultSet = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return array("err" => false, "data" => $resultSet);
 
-            } catch (\Throwable $th) {
-                return array("err" => true, "data" => $th->getMessage());
-            }
+        } catch (\Throwable $th) {
+            return array("err" => true, "data" => $th->getMessage());
         }
+}
 
         public static function executeQuery($sql, $params = null){
             self::$error = null;
@@ -43,7 +43,6 @@ namespace model;
             }
             return $query;
         }
-        
         public static function Query($sql, $params = null, $className = null){
             $query = self::executeQuery($sql, $params);
 
