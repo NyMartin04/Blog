@@ -42,10 +42,6 @@ function JWTValidate(Req $req, Res $res){
     $res->send();
 }
 
-function test($req,$res){
-    
-}
-
 if ($req->getMethod() === "POST") {
     switch ($req->getFun()) {
         case "login": login($req, $res);
