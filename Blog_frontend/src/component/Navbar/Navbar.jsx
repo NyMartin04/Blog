@@ -21,7 +21,7 @@ const Navbar = () => {
                 }
             })
         }
-    }, [])
+    }, [Cookie.getCookie("token")])
 
     return (
         <div className='shadow-2xl'>

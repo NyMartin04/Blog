@@ -16,7 +16,9 @@ const Login = () => {
     const submit = (e) => {
         e.preventDefault();
         fetch.postData("UserController.php/login", state).then(data => {
-            console.log(data);
+            if (!data.err) {
+                Cookie.setCookie("token",data.JWT, { expires: 1800 })
+            }
         }).catch(err => {
             console.log(err);
         });

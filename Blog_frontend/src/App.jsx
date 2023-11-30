@@ -5,8 +5,6 @@ import Sign from "./component/Sign/sign.jsx";
 // import Sign from "./component/";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <Router>
     

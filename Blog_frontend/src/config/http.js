@@ -20,6 +20,7 @@ const apiService = {
   postData: async (endpoint, data) => {
     try {
         if (Cookie.getCookie("token")) {
+          console.log("ez fut le ");
             const response = await axios.post(`${apiUrl}/${endpoint}`, data,{token:Cookie.getCookie("token")});
       return response.data;
         }else{
