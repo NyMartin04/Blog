@@ -34,20 +34,30 @@ function sign(Req $req, Res $res){
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
+
 function getUserByID(Req $req, Res $res){
     $serviceData = UserService::getUserById($req->getBody());
     $res->setBody($serviceData);
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
+
 function getUserByUsername(Req $req, Res $res){
     $serviceData = UserService::getUserByUsername($req->getBody());
     $res->setBody($serviceData);
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
+
 function userUpdate(Req $req, Res $res){
     $serviceData = UserService::userUpdate($req->getBody());
+    $res->setBody($serviceData);
+    $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
+    $res->send();
+}
+
+function getUserMessages(Req $req, Res $res){
+    $serviceData = UserService::getUserMessages($req->getBody());
     $res->setBody($serviceData);
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
@@ -59,6 +69,7 @@ function JWTValidate(Req $req, Res $res){
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
+
 
 function test($req,$res){
     
@@ -82,6 +93,9 @@ if ($req->getMethod() === "POST") {
             break;
         case "userUpdate":
             userUpdate($req, $res);
+            break;
+        case "getUserMessages":
+            getUserMessages($req, $res);
             break;
         default: $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR);
             break;

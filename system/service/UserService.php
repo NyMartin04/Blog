@@ -43,35 +43,38 @@ class UserService
             }
         }
         if (!isset($data["username"])) {
-            return array("err" => true, "data" => "Wrong UserName");
+            return array("err" => true, "data" => "Wrong Username");
         } else {
             $username = $data["username"];
             if (preg_match('/^[a-zA-Z0-9]+$/', $username)) {
                 $data["username"] = $username;
             } else {
-                return array("err" => true, "data" => "Wrong UserName");
+                return array("err" => true, "data" => "Wrong Username");
             }
         }
         return UserModel::CallProcedure($data, "signup");
     }
+    
     public static function getUserById($data)
     {
         if (!isset($data["id"]) ||  !is_int($data["id"])) {
-            return array("err" => true, "data" => "Miss User Id");
+            return array("err" => true, "data" => "Id must not be null.");
         }
         return UserModel::CallProcedure($data, "getUserByID");
     }
+    
     public static function getUserByUsername($data)
     {
         return UserModel::CallProcedure($data, "getUserByUsername");
     }
+    
     public static function userUpdate($data)
     {
         $errors = array();
 
         // Ellenőrizze az "id"-t
         if (!isset($data["id"])) {
-            return array("err" => true, "data" => "Miss User Id");
+            return array("err" => true, "data" => "Id must not be null.");
         }
 
         // Ellenőrizze a "username"-t
@@ -79,7 +82,7 @@ class UserService
             $username = $data["username"];
 
             if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
-                $errors[] = "Wrong UserName";
+                $errors[] = "Wrong Username";
             }
         }
 
@@ -117,6 +120,14 @@ class UserService
 
         // Minden rendben, hívja meg a userUpdate tárolt eljárást
         return UserModel::CallProcedure($data, "userUpdate");
+    }
+    
+    public static function getUserMessages($data){
+        if (isset($data["id"])) {
+            return UserModel::CallProcedure($data, "getUserMessages");
+        } else{
+            Exception::msg(array("err" => true, "data" => "No messages found for this user."));
+        }
     }
 
 
