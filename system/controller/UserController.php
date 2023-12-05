@@ -16,7 +16,7 @@ use config\HttpStatus;
 use service\UserService;
 use config\Exception;
 
-/*Login #DONE, Reg #DONE, JWTValidate #DONE, Follow #TODO, Profile update #TODO, Messages #TODO, Post Notifications #TODO, Likes #TODO*/
+/*Login #DONE, Reg #DONE, JWTValidate #DONE, Follow #TODO, Profile update #DONE, Messages #TODO, Post Notifications #TODO, Likes #TODO*/
 
 $req = new Req();
 $res = new Res();
