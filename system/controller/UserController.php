@@ -56,7 +56,7 @@ function userUpdate(Req $req, Res $res){
     $res->send();
 }
 
-function getUserMessages(Req $req, Res $res){
+function getAllMessagesById(Req $req, Res $res){
     $serviceData = UserService::getUserMessages($req->getBody());
     $res->setBody($serviceData);
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
@@ -69,7 +69,6 @@ function JWTValidate(Req $req, Res $res){
     $serviceData["err"] ? $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : $res->setStatus_code(HttpStatus::OK);
     $res->send();
 }
-
 
 function test($req,$res){
     
@@ -94,8 +93,8 @@ if ($req->getMethod() === "POST") {
         case "userUpdate":
             userUpdate($req, $res);
             break;
-        case "getUserMessages":
-            getUserMessages($req, $res);
+        case "getAllMessagesById":
+            getAllMessagesById($req, $res);
             break;
         default: $res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR);
             break;

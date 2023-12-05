@@ -12,8 +12,8 @@ class UserModel{
             try {
                 $db = Db::connectToDatabase('b__j_c_sblog', 'root', '');
             } catch (\PDOException $th) {
-                $db = Db::connectToDatabase('blogdb', 'root', '');
-            }     
+                $db = Db::connectToDatabase('blog', 'root', '');
+            }
         return Db::Call($storeProcedure, $array, $db);
     }
 }

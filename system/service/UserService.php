@@ -123,13 +123,11 @@ class UserService
     }
     
     public static function getUserMessages($data){
-        if (isset($data["id"])) {
-            return UserModel::CallProcedure($data, "getUserMessages");
-        } else{
+        if (!isset($data["id"])) {
             Exception::msg(array("err" => true, "data" => "No messages found for this user."));
         }
+        return UserModel::CallProcedure($data, 'getAllMessageById');
     }
-
 
     public static function JWTValidate($JWT)
     {
