@@ -107,7 +107,7 @@ class UserService
         }
 
         // Kezelje a többi mezőt
-        $fields = ["bio", "level", "email", "profilePicture"];
+        $fields = ["username", "email", "password" ,"bio","profilePicture","level"];
 
         foreach ($fields as $field) {
             $data[$field] = isset($data[$field]) ? $data[$field] : null;
@@ -125,6 +125,7 @@ class UserService
     public static function getUserMessages($data){
         if (!isset($data["id"])) {
             Exception::msg(array("err" => true, "data" => "No messages found for this user."));
+            return 0;
         }
         return UserModel::CallProcedure($data, 'getAllMessageById');
     }
