@@ -15,5 +15,9 @@ use config\Res;
 use config\HttpStatus;
 use service\UserService;
 use config\Exception;
-
+class PostController{
+    static function getAllPost($req,$res){
+        echo "jo a post is";
+    }
+}
 /*CRUD, if post->Notification, Comment */
