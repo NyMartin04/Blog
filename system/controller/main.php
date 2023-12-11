@@ -10,16 +10,14 @@ use controller\PostController;
 use config\Exception;
 
 
-$req = new Req();
-$res = new Res();
-if ($req->getMethod() === "POST") {
-    if (method_exists(Controller::class, $req->getFun())) {
-        Controller::{$req->getFun()}($req, $res);
-    } else if (method_exists(PostController::class, $req->getFun())) {
-        PostController::{$req->getFun()}($req, $res);
+if (Req::getReqMethod() === "POST") {
+    if (method_exists(Controller::class, Req::getReqFun())) {
+        Controller::{Req::getReqFun()}();
+    } else if (method_exists(PostController::class, Req::getReqFun())) {
+        PostController::{Req::getReqFun()}();
     } else {
         Exception::msg(array("err" => true, "data" => "Bad Requiest not found METHOD."));
     }
 } else {
-    Exception::msg(array("err" => true, "data" => $req->getMethod() . " not found."));
+    Exception::msg(array("err" => true, "data" => Req::getReqMethod(). " not found."));
 }

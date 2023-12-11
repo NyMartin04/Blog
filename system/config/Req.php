@@ -4,94 +4,27 @@ namespace config;
 
 
 class Req{
-    private $device;
-    private $body;
-    private $fun;
-    private $method;
-    private $funNum = 5;
-    private $token;
+    static public $body;
+    static public $fun;
+    static public $method;
+    static public $funNum = 5;
+    static public $token;
     
-public function __construct(){
-    $this->setBody(json_decode(file_get_contents('php://input'), true));
-    $this->setDevice($_SERVER['REMOTE_ADDR']);
-    $fun = isset(explode("/", $_SERVER['REQUEST_URI'])[$this->funNum])? explode("/", $_SERVER['REQUEST_URI'])[$this->funNum]: "";
-    $this->setFun($fun);
-    $this->setMethod($_SERVER['REQUEST_METHOD']);
-	if(isset(getallheaders()["token"])) {
-		$this->token = getallheaders()["token"];
-	} else {
-		$this->token = null;
-	}
-    
-}
-
-
-public function getToken() {
-    return $this->token;
-}
-
-	/**
-	 * @return mixed
-	*/
-	public function getDevice() {
-		return $this->device;
-	}
+	static public function getReqBody():array{
+		return json_decode(file_get_contents('php://input'), true);
+	} 
 	
-	/**
-	 * @param mixed $device 
-	 * @return self
-	*/
-	private function setDevice($device): self {
-		$this->device = $device;
-		return $this;
-	}
-	/**
-	 * @return mixed
-	*/
-	public function getBody() {
-		return $this->body;
-	}
-	
-	/**
-	 * @param mixed $body 
-	 * @return self
-	*/
-	private function setBody($body): self {
-		$this->body = $body;
-		return $this;
-	}
+	static public function getReqFun():string{
+		return isset(explode("/", $_SERVER['REQUEST_URI'])[Req::$funNum])? explode("/", $_SERVER['REQUEST_URI'])[Req::$funNum]: "";
+	} 
+	static public function getReqMethod():string{
+		return $_SERVER['REQUEST_METHOD'];
+	} 
+	static public function getReqToken():string{
+		return isset(getallheaders()["token"])?getallheaders()["token"]:null;
+	} 
 
-	/**
-	 * @return mixed
-	*/
-	public function getFun() {
-		return $this->fun;
-	}
-	
-	/**
-	 * @param mixed $fun 
-	 * @return self
-	*/
-	private function setFun($fun): self {
-		$this->fun = $fun;
-		return $this;
-	}
 
-	/**
-	 * @return mixed
-	*/
-	public function getMethod() {
-		return $this->method;
-	}
-	
-	/**
-	 * @param mixed $method 
-	 * @return self
-	*/
-	private function setMethod($method): self {
-		$this->method = $method;
-		return $this;
-	}
 }
 /*Ebben a példában a Req osztályt használjuk egy HTTP kérés adatainak megjelenítésére és feldolgozására. 
 Az osztály getDevice(), getBody(), getFun(), és getMethod() metódusai segítségével hozzáférhetünk a kérés
