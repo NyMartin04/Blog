@@ -1,40 +1,64 @@
-// apiService.js
-
 import axios from 'axios';
-import Cookie from "./cookieHandler.js"
-const apiUrl = 'http://localhost/Blog/system/controller'; // A te API címedet itt kell megadnod
+import Cookie from "./cookieHandler.js";
 
-const apiService = {
-  // Példa egy egyszerű GET kérésre
-  fetchData: async (endpoint) => {
+const apiUrl = 'http://localhost/Blog/system/controller/main.php';
+
+const apiService = axios.create({
+  headers: {
+    // 'Accept': 'application/json',
+    // 'Content-Type': 'application/json'
+  },
+});
+
+apiService.interceptors.request.use(
+  (config) => {
+    if (Cookie.getCookie("token")) {
+      config.headers['token'] = Cookie.getCookie("token");
+    }
+    return config;
+  },
+  (error) => {
+    console.error('Error in request interceptor:', error);
+    return Promise.reject(error);
+  }
+);
+
+apiService.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+  (error) => {
+    console.error('Error in response interceptor:', error);
+    return Promise.reject(error);
+  }
+);
+
+
+const dataHandler = {
+  fetchDataAndHandle: async (endpoint) => {
     try {
-      const response = await axios.get(`${apiUrl}/${endpoint}`);
-      return response.data;
+      const data = await apiService.get(`/${endpoint}`);
+      // Itt tedd meg azokat az adatkezeléseket, amiket a kapott adatokkal szeretnél végezni
+      console.log('Received data:', data);
+      return data;
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching and handling data:', error);
       throw error;
     }
   },
 
-  // Példa egy POST kérésre
-  postData: async (endpoint, data) => {
+  postDataAndHandle: async (endpoint, postData) => {
     try {
-        if (Cookie.getCookie("token")) {
-          console.log("ez fut le ");
-            const response = await axios.post(`${apiUrl}/${endpoint}`, data,{token:Cookie.getCookie("token")});
-      return response.data;
-        }else{
-            const response = await axios.post(`${apiUrl}/${endpoint}`, data);
-      return response.data;
-        }
-      
+      const response = await apiService.post(`${apiUrl}/${endpoint}`, postData);
+      // Itt tedd meg azokat az adatkezeléseket, amiket a kapott válasszal szeretnél végezni
+      console.log('Received response:', response);
+      return response;
     } catch (error) {
-      console.log('Error posting data:', error);
+      console.error('Error posting and handling data:', error);
       throw error;
     }
   },
-
-  // További kérések és szolgáltatások hozzáadhatók a szükségleteknek megfelelően
 };
 
-export default apiService;
+export default dataHandler;
+

@@ -1,29 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Navbar from '../Navbar/Navbar'
-
 import loginPNG from "../../assets/login.png"
 import signupPNG from "../../assets/signup.png"
-
-import fetch from "../../config/http.js"
-import Cookie from "../../config/cookieHandler.js"
-
+import { useNavigate } from 'react-router-dom';
+import dataHandler from "../../config/http.js"
+import baseFun from '../../config/baseFun.js'
 const Login = () => {
     const state = {
-        email: "",
-        password: ""
+        email: "martin@gmail.com",
+        password: "12345678Az"
     }
     const submit = (e) => {
         e.preventDefault();
-        fetch.postData("UserController.php/login", state).then(data => {
-            if (!data.err) {
-                Cookie.setCookie("token",data.JWT, { expires: 1800 })
-            }
-        }).catch(err => {
-            console.log(err);
-        });
+//          fetch("http://localhost/Blog/system/controller/main.php/login", {
+//     method: 'POST',
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(state)
+// })
+// .then(res => {
+//     console.log(res);
+//     return res.json(); // Változtatás: .json() helyett .text()
+// })
+// .then(result => {
+//     console.log(result);
+// })
+// .catch(err => {
+//     console.log(err);
+// });  
+dataHandler.postDataAndHandle("login", state)
+.then(res => {
+    baseFun.login(res.JWT);
+    baseFun.redirect( "/");
+})
+.catch(err => console.error(err));
     }
-    return (<form className=" w-full  bg-gray my-6 p-10 rounded-2xl" onSubmit={(e)=>{
+
+    return (<form className=" w-full  bg-gray my-6 p-10 rounded-2xl" onSubmit={(e) => {
         e.preventDefault();
         submit(e)
     }}>
@@ -57,20 +73,22 @@ const SignUp = () => {
                 username: state.username,
                 password: state.password,
             }
-            fetch.postData("UserController.php/sign", data).then(data => {
-                console.log(data);
-            }).catch(err => {
-                console.log(err);
-            });
+            dataHandler.postDataAndHandle("sign",data)
+            .then(res=>{
+                console.log(res);
+            })
+            .catch(err=>{
+                console.error(err);
+            })
         }
 
     }
     return (
 
-        <form className=" w-full  bg-gray my-6 p-10 rounded-2xl" onSubmit={(e)=>{ 
+        <form className=" w-full  bg-gray my-6 p-10 rounded-2xl" onSubmit={(e) => {
             e.preventDefault();
             submit(e)
-            }}>
+        }}>
             <div className="relative z-0 w-full md:w-[50vw] mb-5 group">
                 <input onChange={(e) => { state.email = e.target.value }} type="email" name="email" id="email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                 <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
@@ -94,7 +112,7 @@ const SignUp = () => {
     )
 }
 
-const sign = () => {
+const Sign = () => {
 
     const [isLogin, setIsLogin] = useState(true);
 
@@ -117,4 +135,4 @@ const sign = () => {
     )
 }
 
-export default sign
+export default Sign
