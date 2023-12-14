@@ -8,7 +8,7 @@ use model\UserModel;
 use config\JWThandler;
 use config\Exception;
 
-class UserService
+class UserService 
 {
     public static function login($data)
     {
@@ -140,5 +140,8 @@ class UserService
         } else {
             Exception::msg(array("err" => true, "data" => "Unexpected error."));
         }
+    }
+    static public function validator(array $data):bool|array{
+        return true;
     }
 }

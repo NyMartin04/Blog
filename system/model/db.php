@@ -1,7 +1,7 @@
 <?php
 
 namespace model;
-        
+require_once __DIR__ . '\..\..\Autoloader.php';  
     class Db{
         public static function connectToDatabase($dbName, $dbUser, $dbPass, $dbHost = '127.0.0.1'){
             $dsn = "mysql:host=".$dbHost.";dbname=".$dbName.";charset=utf8mb4";
