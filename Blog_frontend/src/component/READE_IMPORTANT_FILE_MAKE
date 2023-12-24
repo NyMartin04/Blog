@@ -1,0 +1,43 @@
+import axios from 'axios';
+
+// ...
+
+const handleFileUpload = () => {
+  const fileInput = document.getElementById('file-input');
+  const file = fileInput.files[0];
+
+  // Engedélyezett fájltípusok
+  const allowedFileTypes = ['image/jpeg', 'image/png', 'video/mp4'];
+
+  if (!file || !allowedFileTypes.includes(file.type)) {
+    console.error('Érvénytelen fájltípus. Kérlek válassz egy megfelelő fájltípust.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onloadend = function () {
+    const base64Encoded = reader.result.split(',')[1]; // Az adat rész kinyerése
+
+    // Elküldeni kívánt adatok összeállítása
+    const data = {
+      file: {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        content: base64Encoded,
+      },
+      // Egyéb adatok, ha szükséges
+    };
+
+    // POST kérés küldése az API-hoz
+    axios.post('https://your-server.com/upload.php', data)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Hiba történt a kérés során:', error);
+      });
+  };
+
+  reader.readAsDataURL(file);
+};
