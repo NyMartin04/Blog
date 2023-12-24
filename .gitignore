@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 /vendor/
 /nbproject/private/
+/Blog_frontend/node_modules
