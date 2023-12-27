@@ -73,4 +73,11 @@ static function verify(){
     self::$res->send();
 }
 
+static function createFollow(){
+    self::$res = new Res();
+    $service = UserService::createFollow(Req::getReqBody());
+    self::$res->setBody($service);
+    $service["err"] ? self::$res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : self::$res->setStatus_code(HttpStatus::OK);
+    self::$res->send();
+}
 }

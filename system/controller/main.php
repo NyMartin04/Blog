@@ -28,6 +28,8 @@ require_once __DIR__ . '\..\..\Autoloader.php';
 use config\Req;
 use controller\UserController;
 use controller\PostController;
+use controller\FileController;
+use controller\FaqController;
 use config\Exception;
 
 
@@ -36,10 +38,17 @@ if (Req::getReqMethod() === "POST") {
         UserController::{Req::getReqFun()}();
     } else if (method_exists(PostController::class, Req::getReqFun())) {
         PostController::{Req::getReqFun()}();
+    } else if (method_exists(FaqController::class, Req::getReqFun())) {
+        FaqController::{Req::getReqFun()}();
+    } else if (method_exists(FileController::class, Req::getReqFun())) {
+        FileController::{Req::getReqFun()}();
     } else {
         Exception::msg(array("err" => true, "data" => "Bad Requiest not found Fun."));
     }
 } else {
-    Exception::msg(array("err" => true, "data" => Req::getReqMethod(). " not found."));
+    
+        Exception::msg(array("err" => true, "data" => Req::getReqMethod(). " not found."));
+
+    
 }
 // echo json_encode(array("err"=>false));

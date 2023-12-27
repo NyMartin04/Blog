@@ -141,6 +141,14 @@ class UserService
             Exception::msg(array("err" => true, "data" => "Unexpected error."));
         }
     }
+
+    public static function createFollow(array $bodyValue ){
+        if (!isset($bodyValue["follow"]) || !isset($bodyValue["follower"]) ) {
+            return array("err"=>true,"data"=>"Not Valid Data");
+        }
+        return UserModel::CallProcedure($bodyValue, 'createFollow');
+    }
+
     static public function validator(array $data):bool|array{
         return true;
     }
