@@ -12,14 +12,7 @@ const Navbar = () => {
 
     const [isLogin, setIsLogin] = useState(false);
     const [searchValue, setSearchValue] = useState([]);
-    const [ImageData, setImageData] = useState(null);
-    const [fileId, setFileId] = useState([]);
 
-    const handlerFileId = (data) => {
-        // Az új elemet hozzáadja a fileId tömbhöz
-        setFileId(prevFileId => [...prevFileId, data]);
-    }
-    
 
     useEffect(() => {
         if (Cookie.getCookie("token")) {
@@ -46,35 +39,6 @@ const Navbar = () => {
                 })
         }
     }, [Cookie.getCookie("token")])
-    useEffect(() => {
-        const fetchData = async () => {
-
-            await dataHandler.postDataAndHandle('getFile', { fileId: 1 }).then(res => {
-
-                console.log(res.data);
-                const byteCharacters = atob(res.data);
-                const byteNumbers = new Array(byteCharacters.length);
-
-                for (let i = 0; i < byteCharacters.length; i++) {
-                    byteNumbers[i] = byteCharacters.charCodeAt(i);
-                }
-
-                const byteArray = new Uint8Array(byteNumbers);
-
-                // Készítünk egy Blob objektumot a byte tömbből
-                const blob = new Blob([byteArray], { type: 'image/png' });
-
-                // Beállítjuk a state-et a létrehozott blob objektumra
-                setImageData(blob);
-            }).catch(err => {
-                console.log(err);
-            })
-
-        };
-
-        // Adatok lekérdezése a komponens mount-olásakor
-        fetchData();
-    }, [])
     const searchUser = (e) => {
         e.preventDefault();
         
@@ -112,11 +76,12 @@ const Navbar = () => {
                         }} type="text" placeholder='Search Blogger' />{searchValue !== false && <div className="absolute  min-h-[50px] bg-white rounded-md shadow-2xl w-auto grid grid-cols-1 ">
                             
 
-                            {searchValue.map((item, index) => {
+                        {searchValue.map((item, index) => {
+                            console.log(item);
                                 return (
                                     <div key={index} className='flex justify-center items-center'>
                                         <div className='flex justify-between items-center hover:bg-white hover:text-black text-white bg-black min-w-[200px] px-3 py-1 max-w-[400px]'>
-                                            <img src={URL.createObjectURL(ImageData)} alt=""/>
+                                            <img src={item.url} alt=""/>
                                             <div className=''>{item.username}</div>
                                         </div>
                                     </div>
@@ -139,7 +104,7 @@ const Navbar = () => {
                 <div className='grid grid-cols-1 md:grid-cols-3   justify-start'>
                     <a href='/' className='rounded-lg grid justify-center items-center  bg-red  hover:bg-red-400 my-2 md:my-0 md:mx-2 py-4'><button className='shadow-2xl text-white text-center'>Home</button></a>
                     {!isLogin && <a href='/sign' className='rounded-lg grid justify-center items-center  bg-red  hover:bg-red-400 my-2 md:my-0 md:mx-2 py-4'><button className='shadow-2xl text-white text-center'>Sign</button></a>}
-                    {isLogin && <a href='#' className='rounded-lg grid justify-center items-center  bg-red  hover:bg-red-400 my-2 md:my-0 md:mx-2 py-4'><button className='shadow-2xl text-white text-center'>Create Post</button></a>}
+                    {isLogin && <a href='/post' className='rounded-lg grid justify-center items-center  bg-red  hover:bg-red-400 my-2 md:my-0 md:mx-2 py-4'><button className='shadow-2xl text-white text-center'>Create Post</button></a>}
                 </div>
 
             </div>
