@@ -4,10 +4,9 @@
 /blog/node_modules
 /.pnp
 .pnp.js
-
 # testing
 /coverage
-
+/config.ini
 # production
 /build
 

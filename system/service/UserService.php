@@ -7,13 +7,18 @@ require_once __DIR__ . '\..\..\Autoloader.php';
 use model\UserModel;
 use config\JWThandler;
 use config\Exception;
+use config\HttpStatus;
 
 class UserService 
 {
     public static function login($data)
     {
         $data["password"] = hash("sha256", $data["password"]);
-        $JWTData = UserModel::CallProcedure($data, "login");
+        $arr = array(
+            "email"=>$data["email"],
+            "password"=>$data["password"]
+        );
+        $JWTData = UserModel::CallProcedure($arr, "login");
         return array("err" => $JWTData["err"], "JWT" => JWThandler::generateJWT($JWTData), "data" => $JWTData["data"]);
     }
 
@@ -147,6 +152,9 @@ class UserService
             return array("err"=>true,"data"=>"Not Valid Data");
         }
         return UserModel::CallProcedure($bodyValue, 'createFollow');
+    }
+    public static function getTopBlogger(){
+        return UserModel::CallProcedure(array(),"getTopBlogger");
     }
 
     static public function validator(array $data):bool|array{
