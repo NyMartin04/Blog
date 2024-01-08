@@ -36,6 +36,8 @@ const Navbar = () => {
                 })
                 .catch(err => {
                     console.error(err);
+                    baseFun.logout();
+                    baseFun.redirect("/")
                 })
         }
     }, [Cookie.getCookie("token")])

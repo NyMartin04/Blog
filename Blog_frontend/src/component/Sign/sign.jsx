@@ -33,6 +33,8 @@ const Login = () => {
 // });  
 dataHandler.postDataAndHandle("login", state)
 .then(res => {
+    baseFun.saveUserData({userId:res.data[0].id,username:res.data[0].username,email:res.data[0].email});
+    //console.log(res.data[0].id,res.data[0].username,res.data[0].email);
     baseFun.login(res.JWT);
     baseFun.redirect( "/");
 })
@@ -59,9 +61,9 @@ dataHandler.postDataAndHandle("login", state)
     </form>)
 }
 const SignUp = () => {
-    const state = {
-        email: "",
+    const state = {      
         username: "",
+        email: "",
         password: "",
         repassword: ""
     }
@@ -69,8 +71,8 @@ const SignUp = () => {
         e.preventDefault();
         if (state.repassword === state.password) {
             const data = {
-                email: state.email,
                 username: state.username,
+                email: state.email,
                 password: state.password,
             }
             dataHandler.postDataAndHandle("sign",data)
