@@ -22,18 +22,36 @@ Req::CONFIG_OPTIMALIZATION();
 
 
 if (Req::getReqMethod() === "POST") {
+    $logFile = __DIR__.'\..\..\change_log.txt';
+
+    $headerCode_Res;
 
     if (method_exists(UserController::class, Req::getReqFun())) {
         UserController::{Req::getReqFun()}();
+        $headerCode_Res =  UserController::$res->getStatus_code();
     } else if (method_exists(PostController::class, Req::getReqFun())) {
         PostController::{Req::getReqFun()}();
+        $headerCode_Res =  PostController::$res->getStatus_code();
     } else if (method_exists(FaqController::class, Req::getReqFun())) {
         FaqController::{Req::getReqFun()}();
+        $headerCode_Res =  FaqController::$res->getStatus_code();
     } else if (method_exists(FileController::class, Req::getReqFun())) {
         FileController::{Req::getReqFun()}();
+        $headerCode_Res =  FileController::$res->getStatus_code();
     } else {
         Exception::msg(array("err" => true, "data" => "Bad Requiest not found Fun."));
     }
+    if (!file_exists($logFile)) {
+        touch($logFile); 
+        chmod($logFile, 0666);
+    }
+    print_r($headerCode_Res);
+    if (!empty(Req::getReqBody())) {
+        $data = date('Y-m-d H:i:s') . " - " . json_encode(Req::getReqBody()). "/Status : {$headerCode_Res}" . "\n"; 
+        file_put_contents($logFile, $data, FILE_APPEND | LOCK_EX); 
+        echo"fds";
+    }
+
 } else {
         Exception::msg(array("err" => true, "data" => Req::getReqMethod(). " not found."));
 }
