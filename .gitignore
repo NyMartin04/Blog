@@ -2,6 +2,7 @@
 
 # dependencies
 /blog/node_modules
+/vendor
 # Logs
 logs
 *.log
