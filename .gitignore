@@ -9,7 +9,7 @@
 /config.ini
 # production
 /build
-
+/Blog_frontend
 # misc
 .DS_Store
 .env.local
