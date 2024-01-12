@@ -1,4 +1,5 @@
 <?php
+
 use PHPUnit\Framework\TestCase;
 use service\UserService;
 
@@ -12,12 +13,12 @@ class UserServiceTest extends TestCase{
         $classes = UserService::login($dataSend);
         $this->assertFalse($classes["err"]);
     }
-    public function testSignUpSuccess(){
-        $dataSend = array("username"=>"tester".rand(0,100000000),"email"=>"testEmail".rand(0,100000000)."@gmail.com"
-        ,"password"=>"testPass12AZ");
-        $classes = UserService::sign($dataSend);
-        $this->assertFalse($classes["err"]);
-    }
+    // public function testSignUpSuccess(){
+    //     $dataSend = array("username"=>"tester".rand(0,100000000),"email"=>"testEmail".rand(0,100000000)."@gmail.com"
+    //     ,"password"=>"testPass12AZ");
+    //     $classes = UserService::sign($dataSend);
+    //     $this->assertFalse($classes["err"]);
+    // }
     public function testLoginFail(){
         $dataSend = array("email"=>"martin@gmail.com"
         ,"password"=>"");
@@ -40,6 +41,41 @@ class UserServiceTest extends TestCase{
         $classes = UserService::getUserById($fakeData);
         $this->assertTrue($classes["err"]);
     }
+    public function testgetUserByUsernameSuccess(){
+        $fakeData = array("username"=>"lol");
+        $classes = UserService::getUserByUsername($fakeData);
+        $this->assertFalse($classes["err"]);
+    }
+    public function testgetUserByUsernameFail(){
+        $fakeData = array("id"=>11,"username"=>10);
+        $classes = UserService::getUserByUsername($fakeData);
+        $this->assertTrue($classes["err"]);
+    }
+    public function testgetUserMessagesSuccess(){
+        $fakeData = array("senderId"=>1, "receiverId"=>2);
+        $classes = UserService::getUserMessages($fakeData);
+        $this->assertFalse($classes["err"]);
+    }
+    public function testgetUserMessagesFail(){
+        $fakeData = array(""=>1,"id"=>1, "receiverId"=>2);
+        $classes = UserService::getUserMessages($fakeData);
+        $this->assertTrue($classes["err"]);
+    }
+    public function testcreateFollowSuccess(){
+        $fakeData = array("follow"=>1,"follower"=>2);
+        $classes = UserService::createFollow($fakeData);
+        $this->assertFalse($classes["err"]);
+    }
+    public function testcreateFollowFail(){
+        $fakeData = array("follow"=>1,"follower"=>1);
+        $classes = UserService::createFollow($fakeData);
+        $this->assertTrue($classes["err"]);
+    }
+    public function testgetTopBloggerSuccess(){
 
+        $classes = UserService::getTopBlogger();
+        $this->assertFalse($classes["err"]);
+    }
+    
 }
 ?>

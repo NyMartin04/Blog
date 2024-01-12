@@ -33,7 +33,7 @@ class PostService
             "InText" => $data["text"], 
             "InUserID" => $data["userID"], 
             "hasFile" => $data["IsFile"], 
-            "FileID" => Req::$fileData["id"],
+            "FileID" => isset(Req::$fileData["id"])?Req::$fileData["id"]:1,
             "carName" => $data["carName"],
             "carBrand" => $data["carBrand"]
         );

@@ -128,10 +128,10 @@ class UserService
     }
     
     public static function getUserMessages($data){
-        if (!isset($data["id"])) {
-            Exception::msg(array("err" => true, "data" => "No messages found for this user."));
-            return 0;
-        }
+        // if (!isset($data["id"])) {
+        //     Exception::msg(array("err" => true, "data" => "No messages found for this user."));
+        //     return 0;
+        // }
         return UserModel::CallProcedure($data, 'getAllMessageById');
     }
 
@@ -148,7 +148,7 @@ class UserService
     }
 
     public static function createFollow(array $bodyValue ){
-        if (!isset($bodyValue["follow"]) || !isset($bodyValue["follower"]) ) {
+        if ((!(isset($bodyValue["follow"]) && isset($bodyValue["follower"])) || ($bodyValue["follow"] === $bodyValue["follower"])) ) {
             return array("err"=>true,"data"=>"Not Valid Data");
         }
         return UserModel::CallProcedure($bodyValue, 'createFollow');

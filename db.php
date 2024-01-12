@@ -3,18 +3,11 @@
 namespace model;
 require_once __DIR__ . '\..\..\Autoloader.php';  
     class Db{
-        public static function connectToDatabase($dbName, $dbUser, $dbPass, $dbHost = 'mysql.rackhost.hu') {
+        public static function connectToDatabase($dbName, $dbUser, $dbPass, $dbHost = '127.0.0.1'){
             $dsn = "mysql:host=".$dbHost.";dbname=".$dbName.";charset=utf8mb4";
-            
-            try {
-                self::$db = new \PDO($dsn, $dbUser, $dbPass);
-            } catch (\PDOException $e) {
-                die("Hiba a kapcsolat létrehozása közben: " . $e->getMessage());
-            }
-            
+            self::$db = new \PDO($dsn, $dbUser, $dbPass);
             return self::$db;
         }
-        
         
         public static function Call($name, $array, $db) {
             try {
