@@ -14,7 +14,7 @@ export default function User(params) {
                 console.log(res.data.le);
             }).catch(err=>{
                 console.log(err);
-                baseFun.redirect("/");
+                //baseFun.redirect("/");
             })
         } catch (error) {
                 console.log("nem jo");

@@ -33,6 +33,7 @@ const Login = () => {
 // });  
 dataHandler.postDataAndHandle("login", state)
 .then(res => {
+    console.log(res);
     baseFun.saveUserData({userId:res.data[0].id,username:res.data[0].username,email:res.data[0].email});
     //console.log(res.data[0].id,res.data[0].username,res.data[0].email);
     baseFun.login(res.JWT);
