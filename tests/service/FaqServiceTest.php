@@ -12,4 +12,15 @@ class FaqServiceTest extends TestCase{
     //     $classes = FaqService::createFaq($dataSend);
     //     $this->assertFalse($classes["err"]);
     // }
+    public function testgetAllFaqSuccess(){
+        $dataSend = array();
+        $classes = FaqService::getAllFaq();
+        $this->assertFalse($classes["err"]);
+    }
+    public function testgetFaqByIdSuccess(){
+        $dataSend = array("faqId"=>1);
+        $classes = FaqService::getFaqById($dataSend);
+        $this->assertFalse($classes["err"]);
+    }
+
 }
