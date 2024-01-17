@@ -19,6 +19,14 @@ class PostController{
         echo "jo a post is";
     }
 
+    static function getPostByUserID(){
+        self::$res = new Res();
+        $service = PostService::getPostByUserID(Req::getReqBody());
+        self::$res->setBody($service);
+        $service["err"] ? self::$res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : self::$res->setStatus_code(HttpStatus::OK);
+        self::$res->send();
+    }
+
     static function createPost(){
         self::$res = new Res();
         $service = PostService::createPost(Req::getReqBody());

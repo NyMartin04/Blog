@@ -8,6 +8,7 @@ use model\UserModel;
 use config\JWThandler;
 use config\Exception;
 use config\HttpStatus;
+use config\Req;
 
 class UserService 
 {
@@ -140,7 +141,7 @@ class UserService
         $verifyJWT = JWThandler::verifyJWT($JWT);
         if ($verifyJWT) {
             $verifyJWT = JWThandler::generateJWT($verifyJWT);
-            $arr = array("err" => false, "JWT" => $verifyJWT);
+            $arr = array("err" => false, "data" => $verifyJWT);
             return $arr;
         } else {
             Exception::msg(array("err" => true, "data" => "Unexpected error."));
@@ -156,8 +157,34 @@ class UserService
     public static function getTopBlogger(){
         return UserModel::CallProcedure(array(),"getTopBlogger");
     }
-
-    static public function validator(array $data):bool|array{
-        return true;
+    static function getFollowByUserId(){
+        $data = Req::getTokenDataValue();
+        $sendData = array(); 
+        if (is_array($data)) {
+            if (isset($data["id"])) {
+                 $sendData['userId'] = $data["id"];
+            }
+            else{
+                return array("err"=>true,"data"=>"Not valid data in Request".$data);
+            }
+        }else{
+            Exception::msg(array("err"=>true,"data"=>"IsNotSetTokenValue"));
+        }
+        return UserModel::CallProcedure($sendData,"getFollowByUserId");
+    }
+    static function getFollowerByUserId(){
+        $data = Req::getTokenDataValue();
+        $sendData = array(); 
+        if (is_array($data)) {
+            if (isset($data["id"])) {
+                 $sendData['userId'] = $data["id"];
+            }
+            else{
+                return array("err"=>true,"data"=>"Not valid data in Request".$data);
+            }
+        }else{
+            Exception::msg(array("err"=>true,"data"=>"IsNotSetTokenValue"));
+        }
+        return UserModel::CallProcedure($sendData,"getFollowerByUserId");
     }
 }

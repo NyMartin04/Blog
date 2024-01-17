@@ -28,11 +28,13 @@ class JWThandler{
         return $token;
     }
     // JWT ellenőrzése és dekódolása
-    public static function verifyJWT($token) {
+    public static function verifyJWT($token): array|bool {
         try {
             // JWT dekódolás: token, kulcs, algoritmus
             $decoded = JWT::decode($token, new Key(self::$secret, 'HS256'));
-            return $decoded;
+            $decodedArray = json_decode(json_encode($decoded), true);
+
+        return $decodedArray;
         } catch (Exception $e) {
             // Hiba esetén false visszaadása
             return false;

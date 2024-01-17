@@ -15,6 +15,8 @@ class Req
 	static public $funNum = 5;
 	static public $token;
 
+	static public $userData;
+
 	static public array $fileData;
 	static public function getReqBody(): array
 	{
@@ -23,6 +25,13 @@ class Req
 		} catch (\Throwable $th) {
 			return array();
 		}
+	}
+
+	static public function setUserData($verifyToken){
+		Req::$userData = $verifyToken;
+	}
+	static public function getUserData(){
+		return Req::$userData;
 	}
 
 	static public function getIP(){
@@ -41,7 +50,7 @@ class Req
 	{
 		return $_SERVER['REQUEST_METHOD'];
 	}
-	static public function getReqToken(): string
+	static public function getReqToken(): string | null
 	{
 		return isset(getallheaders()["token"]) ? getallheaders()["token"] : null;
 	}
@@ -63,6 +72,19 @@ class Req
 				foreach ($CONFIG_DATA[$key] as $dbKey => $dbValue) {
 					$_SESSION[$key][$dbKey] = $dbValue;
 				}
+			}
+		}
+	}
+	static public function getTokenDataValue(){
+		if(Req::getReqToken() != null){
+	
+			$verifyToken = JWThandler::verifyJWT(Req::getReqToken());
+			if ($verifyToken === false) {
+				
+				Exception::msg(array("err"=>true,"data"=>"Can Not Verify the Token"),HttpStatus::SERVICE_UNAVAILABLE);
+			}else{
+				//print_r(json_encode($verifyToken));
+				return is_array($verifyToken["data"]["data"])?Req::setUserData($verifyToken["data"]["data"][0]):null;
 			}
 		}
 	}
@@ -104,3 +126,4 @@ if (isset(Req::getReqBody()['file'])) {
 		Req::$fileData =  $dataFormDataBase["data"][0];
 	}
 }
+

@@ -87,4 +87,20 @@ static function getTopBlogger(){
     $service["err"] ? self::$res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : self::$res->setStatus_code(HttpStatus::OK);
     self::$res->send();
 }
+static function getFollowByUserId(){
+    self::$res = new Res();
+    $service = UserService::getFollowByUserId();
+    self::$res->setBody($service);
+    $service["err"] ? self::$res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : self::$res->setStatus_code(HttpStatus::OK);
+    self::$res->send();
+}
+static function getFollowerByUserId(){
+    self::$res = new Res();
+    $service = UserService::getFollowerByUserId();
+    self::$res->setBody($service);
+    $service["err"] ? self::$res->setStatus_code(HttpStatus::INTERNAL_SERVER_ERROR) : self::$res->setStatus_code(HttpStatus::OK);
+    self::$res->send();
+}
+
+
 }

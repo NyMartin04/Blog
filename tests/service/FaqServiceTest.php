@@ -22,5 +22,10 @@ class FaqServiceTest extends TestCase{
         $classes = FaqService::getFaqById($dataSend);
         $this->assertFalse($classes["err"]);
     }
+    public function testgetFaqByIdFail(){
+        $dataSend = array("id"=>1);
+        $classes = FaqService::getFaqById($dataSend);
+        $this->assertTrue($classes["err"]);
+    }
 
 }

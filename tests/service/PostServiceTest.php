@@ -18,5 +18,12 @@ class PostServiceTest extends TestCase{
         $classes = PostService::createPost($dataSend);
         $this->assertFalse($classes["err"]);
     }
+    public function testgetPostByUserIDSuccess(){
+        $dataSend = array(
+            "id"=>1
+        );
+        $classes = PostService::getPostByUserID($dataSend);
+        $this->assertFalse($classes["err"]);
+    }
 
 }

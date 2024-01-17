@@ -8,6 +8,21 @@ use model\UserModel;
 use config\Req;
 class PostService
 {
+    static function getPostByUserID(array $data){
+
+        $sendData = array(); 
+        if (isset($data["id"])) {
+             $sendData['userId'] = $data["id"];
+        }
+        else{
+            return array("err"=>true,"data"=>"Not valid data in Request".$data);
+        }
+       
+        
+        return UserModel::CallProcedure($sendData,"getPostByUserID");
+
+    }
+
     static function createPost(array $data)
     {
         isset($data["postId"]) ? true : $data["postId"] = null;
