@@ -75,7 +75,7 @@ class Req
 			}
 		}
 	}
-	static public function getTokenDataValue(){
+	static public function getTokenDataValue(): array | null{
 		if(Req::getReqToken() != null){
 	
 			$verifyToken = JWThandler::verifyJWT(Req::getReqToken());

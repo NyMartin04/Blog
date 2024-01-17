@@ -1330,3 +1330,12 @@
 2024-01-16 18:58:59 - {"id":4,"password":false}/ip : ::1 / route : getUserByID / Status : 200
 2024-01-16 18:58:59 - {"id":4,"password":false}/ip : ::1 / route : getUserByID / Status : 200
 2024-01-17 09:14:18 - {"email":"martin@gmail.com","password":"dba627194bfe7aaa65502b1d5f3f52e623a5d3dda5ae853608e4568f227059f6"}/ip : ::1 / route : login / Status : 200
+2024-01-17 09:38:21 - {"email":"martin@gmail.com","password":"dba627194bfe7aaa65502b1d5f3f52e623a5d3dda5ae853608e4568f227059f6"}/ip : ::1 / route : login / Status : 200
+2024-01-17 09:48:19 - {"email":"martin@gmail.com","password":"dba627194bfe7aaa65502b1d5f3f52e623a5d3dda5ae853608e4568f227059f6"}/ip : ::1 / route : login / Status : 200
+2024-01-17 09:48:43 - {"id":"4","password":false}/ip : ::1 / route : getPostByUserID / Status : 200
+2024-01-17 09:48:43 - {"id":4,"password":false}/ip : ::1 / route : getUserByID / Status : 200
+2024-01-17 09:48:43 - {"id":"4","password":false}/ip : ::1 / route : getPostByUserID / Status : 200
+2024-01-17 09:48:43 - {"id":4,"password":false}/ip : ::1 / route : getUserByID / Status : 200
+2024-01-17 09:53:45 - {"id":4,"password":false}/ip : ::1 / route : getUserByID / Status : 200
+2024-01-17 09:53:45 - {"id":"4","password":false}/ip : ::1 / route : getPostByUserID / Status : 200
+2024-01-17 09:57:38 - {"email":"martin@gmail.com","password":"dba627194bfe7aaa65502b1d5f3f52e623a5d3dda5ae853608e4568f227059f6"}/ip : ::1 / route : login / Status : 200

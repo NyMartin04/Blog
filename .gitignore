@@ -6,7 +6,6 @@
 .pnp.js
 # testing
 /coverage
-/config.ini
 # production
 /build
 /Blog_frontend
