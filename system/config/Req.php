@@ -75,19 +75,19 @@ class Req
 			}
 		}
 	}
-	static public function getTokenDataValue(): array | null{
-		if(Req::getReqToken() != null){
-	
-			$verifyToken = JWThandler::verifyJWT(Req::getReqToken());
-			if ($verifyToken === false) {
-				
-				Exception::msg(array("err"=>true,"data"=>"Can Not Verify the Token"),HttpStatus::SERVICE_UNAVAILABLE);
-			}else{
-				//print_r(json_encode($verifyToken));
-				return is_array($verifyToken["data"]["data"])?Req::setUserData($verifyToken["data"]["data"][0]):null;
-			}
-		}
-	}
+//	static public function getTokenDataValue(): array | null{
+//		if(Req::getReqToken() != null){
+//	
+//			$verifyToken = JWThandler::verifyJWT(Req::getReqToken());
+//			if ($verifyToken === false) {
+//				
+//				Exception::msg(array("err"=>true,"data"=>"Can Not Verify the Token"),HttpStatus::SERVICE_UNAVAILABLE);
+//			}else{
+//				//print_r(json_encode($verifyToken));
+//				return is_array($verifyToken["data"]["data"])?Req::setUserData($verifyToken["data"]["data"][0]):null;
+//			}
+//		}
+//	}
 }
 
 

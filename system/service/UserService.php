@@ -147,6 +147,17 @@ class UserService
             Exception::msg(array("err" => true, "data" => "Unexpected error."));
         }
     }
+    
+        public static function JWTVerify($JWT)
+    {
+        $verifyJWT = JWThandler::verifyJWT($JWT);
+        if ($verifyJWT) {
+            $arr = array("err" => false, "data" => $verifyJWT);
+            return $arr;
+        } else {
+            Exception::msg(array("err" => true, "data" => "Unexpected error."));
+        }
+    }
 
     public static function createFollow(array $bodyValue ){
         if ((!(isset($bodyValue["follow"]) && isset($bodyValue["follower"])) || ($bodyValue["follow"] === $bodyValue["follower"])) ) {
@@ -158,33 +169,37 @@ class UserService
         return UserModel::CallProcedure(array(),"getTopBlogger");
     }
     static function getFollowByUserId(){
-        $data = Req::getTokenDataValue();
-        $sendData = array(); 
-        if (is_array($data)) {
-            if (isset($data["id"])) {
-                 $sendData['userId'] = $data["id"];
-            }
-            else{
-                return array("err"=>true,"data"=>"Not valid data in Request".$data);
-            }
-        }else{
-            Exception::msg(array("err"=>true,"data"=>"IsNotSetTokenValue"));
-        }
+//        $data = Req::getTokenDataValue();
+//        $sendData = array(); 
+//        if (is_array($data)) {
+//            if (isset($data["id"])) {
+//                 $sendData['userId'] = $data["id"];
+//            }
+//            else{
+//                return array("err"=>true,"data"=>"Not valid data in Request".$data);
+//            }
+//        }else{
+//            Exception::msg(array("err"=>true,"data"=>"IsNotSetTokenValue"));
+//        }
+        $userData = UserService::JWTVerify(Req::getReqToken());
+        $sendData = array('userId' => $userData['data']['data']['data'][0]['id']);
         return UserModel::CallProcedure($sendData,"getFollowByUserId");
     }
     static function getFollowerByUserId(){
-        $data = Req::getTokenDataValue();
-        $sendData = array(); 
-        if (is_array($data)) {
-            if (isset($data["id"])) {
-                 $sendData['userId'] = $data["id"];
-            }
-            else{
-                return array("err"=>true,"data"=>"Not valid data in Request".$data);
-            }
-        }else{
-            Exception::msg(array("err"=>true,"data"=>"IsNotSetTokenValue"));
-        }
+//        $data = Req::getTokenDataValue();
+//        $sendData = array(); 
+//        if (is_array($data)) {
+//            if (isset($data["id"])) {
+//                 $sendData['userId'] = $data["id"];
+//            }
+//            else{
+//                return array("err"=>true,"data"=>"Not valid data in Request".$data);
+//            }
+//        }else{
+//            Exception::msg(array("err"=>true,"data"=>"Is Not Set Token Value"));
+//        }
+        $userData = UserService::JWTVerify(Req::getReqToken());
+        $sendData = array('userId' => $userData['data']['data']['data'][0]['id']);
         return UserModel::CallProcedure($sendData,"getFollowerByUserId");
     }
 }
