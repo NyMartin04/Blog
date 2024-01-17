@@ -26,7 +26,7 @@ const TopBlogger = () => {
             {/* itt lesz map fg ami a top bloggerek lesznek */}
             {topBlogger.map((item,index)=>{
                 return (
-                    <div className='grid justify-center items-center mb-5'>
+                    <div className='grid justify-center items-center mb-5' key={"top"+index}>
                 <div className='grid grid-cols-1 max-h-[50vh] min-h-[20vh] w-screen md:w-[25vw]  rounded-lg bg-white'>
                 <div className='text-center bg-gray rounded-lg justify-center items-center grid shadow-2xl min-h-[15vh]'><h1 className='text-center text-5xl px-10 font-bold text-white'>{item.username}</h1></div>
                 <div className='grid justify-center items-center text-center text-black font-bold text-xl min-h-[20vh]'>{item.bio}</div>

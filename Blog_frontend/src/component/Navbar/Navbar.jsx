@@ -25,14 +25,18 @@ const Navbar = () => {
             // })
             dataHandler.postDataAndHandle("verify", {})
                 .then(res => {
+                    console.log(res);
                     if (!res.err) {
                         setIsLogin(!res.err)
-                        baseFun.login(res.JWT)
+                        baseFun.login(res.data)
 
-                    } else {
-                        baseFun.logout()
                     }
-
+                    else {
+                        //console.log(res);
+                        baseFun.logout();
+                    baseFun.redirect("/")
+                    }
+                    //console.log(res);
                 })
                 .catch(err => {
                     console.error(err);
@@ -40,7 +44,7 @@ const Navbar = () => {
                     baseFun.redirect("/")
                 })
         }
-    }, [Cookie.getCookie("token")])
+    }, [])
     const searchUser = (e) => {
         e.preventDefault();
         
@@ -84,7 +88,7 @@ const Navbar = () => {
                                     <div key={index} className='flex justify-center items-center'>
                                         <div className='flex justify-between items-center hover:bg-white hover:text-black text-white bg-black min-w-[200px] px-3 py-1 max-w-[400px]'>
                                             <img src={item.url} alt=""/>
-                                            <div className=''>{item.username}</div>
+                                            <a href={`/user#${item.id}`} className=''>{item.username}</a>
                                         </div>
                                     </div>
                                 );
@@ -97,8 +101,8 @@ const Navbar = () => {
 
                 {isLogin && <a href='' className='text-white px-4 py-2 justify-center  hover:bg-black hover:rounded-lg'><img src={bell} alt="" className='h-[5vh] shadow-2xl' /></a>}
                 {!isLogin && <a href='/sign' className='text-white px-4 py-2 justify-center  hover:bg-black hover:rounded-lg me-3 md:me-10'><img src={login} alt="" className='h-[5vh] shadow-2xl' /></a>}
-                {isLogin && <a href='' className='text-white px-4 py-2 justify-center  hover:bg-black hover:rounded-lg'><img src={account} alt="" className='h-[5vh] shadow-2xl' /></a>}
-                {isLogin && <a href='' onClick={() => { baseFun.logout() }} className='text-white px-4 py-2 justify-center  hover:bg-black hover:rounded-lgme-3 md:me-10'><img src={Logout} alt="" className='h-[5vh] shadow-2xl' /></a>}
+                {isLogin && <a href='/profile' className='text-white px-4 py-2 justify-center  hover:bg-black hover:rounded-lg'><img src={account} alt="" className='h-[5vh] shadow-2xl' /></a>}
+                {isLogin && <a href='' onClick={() => { baseFun.logout(); baseFun.redirect("/") }} className='text-white px-4 py-2 justify-center  hover:bg-black hover:rounded-lgme-3 md:me-10'><img src={Logout} alt="" className='h-[5vh] shadow-2xl' /></a>}
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 min-h-[15vh] w-full justify-between items-center bg-white'>

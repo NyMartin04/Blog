@@ -39,7 +39,7 @@ const dataHandler = {
     try {
       const data = await apiService.get(`/${endpoint}`);
       // Itt tedd meg azokat az adatkezeléseket, amiket a kapott adatokkal szeretnél végezni
-      console.log('Received data:', data);
+
       return data;
     } catch (error) {
       console.error('Error fetching and handling data:', error);
@@ -51,7 +51,6 @@ const dataHandler = {
     try {
       const response = await apiService.post(`${apiUrl}/${endpoint}`, postData);
       // Itt tedd meg azokat az adatkezeléseket, amiket a kapott válasszal szeretnél végezni
-      console.log('Received response:', response);
       return response;
     } catch (error) {
       console.error('Error posting and handling data:', error);

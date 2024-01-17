@@ -13,33 +13,15 @@ const Login = () => {
     }
     const submit = (e) => {
         e.preventDefault();
-//          fetch("http://localhost/Blog/system/controller/main.php/login", {
-//     method: 'POST',
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(state)
-// })
-// .then(res => {
-//     console.log(res);
-//     return res.json(); // Változtatás: .json() helyett .text()
-// })
-// .then(result => {
-//     console.log(result);
-// })
-// .catch(err => {
-//     console.log(err);
-// });  
-dataHandler.postDataAndHandle("login", state)
-.then(res => {
-    console.log(res);
-    baseFun.saveUserData({userId:res.data[0].id,username:res.data[0].username,email:res.data[0].email});
-    //console.log(res.data[0].id,res.data[0].username,res.data[0].email);
-    baseFun.login(res.JWT);
-    baseFun.redirect( "/");
-})
-.catch(err => console.error(err));
+        dataHandler.postDataAndHandle("login", state)
+            .then(res => {
+                console.log(res);
+                baseFun.saveUserData({ userId: res.data[0].id, username: res.data[0].username, email: res.data[0].email,PPUrl:res.data[0].PPFile });
+                //console.log(res.data[0].id,res.data[0].username,res.data[0].email);
+                baseFun.login(res.JWT);
+                baseFun.redirect("/");
+            })
+            .catch(err => console.error(err));
     }
 
     return (<form className=" w-full  bg-gray my-6 p-10 rounded-2xl" onSubmit={(e) => {
@@ -62,7 +44,7 @@ dataHandler.postDataAndHandle("login", state)
     </form>)
 }
 const SignUp = () => {
-    const state = {      
+    const state = {
         username: "",
         email: "",
         password: "",
@@ -76,13 +58,13 @@ const SignUp = () => {
                 email: state.email,
                 password: state.password,
             }
-            dataHandler.postDataAndHandle("sign",data)
-            .then(res=>{
-                console.log(res);
-            })
-            .catch(err=>{
-                console.error(err);
-            })
+            dataHandler.postDataAndHandle("sign", data)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
         }
 
     }

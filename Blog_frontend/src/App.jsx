@@ -5,6 +5,7 @@ import Sign from "./component/Sign/sign.jsx";
 import Post from "./component/Post/Post.jsx";
 import User from './component/UserSide/User.jsx';
 import PostGet from './component/Post/PostGet.jsx';
+import Profile from './component/UserSide/Porfile.jsx';
 // import Sign from "./component/";0
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/sign' element={<Sign />}></Route>
         <Route exact path='/post' element={<Post />}></Route>
         <Route exact path='/user' element={<User />}></Route>
+        <Route exact path='/profile' element={<Profile />}></Route>
         <Route exact path='/post/get' element={<PostGet  />}></Route>
       </Routes>
 
