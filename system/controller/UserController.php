@@ -16,6 +16,12 @@ use service\UserService;
 class UserController{
 
 static public Res $res;
+static function getIp(){
+    self::$res = new Res();
+    self::$res->setBody(array("err"=>true,"ip"=>Req::getIP()));
+    self::$res->setStatus_code(HttpStatus::OK);
+    self::$res->send();
+}
 
 static function login(){
     self::$res = new Res();
